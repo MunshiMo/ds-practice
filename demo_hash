@@ -1,0 +1,53 @@
+class HashTable:
+    def __init__(self, capacity=8):
+        self.capacity = capacity
+        self.length = 0            # number of key-value pairs stored
+        self.buckets = [[] for _ in range(capacity)]  # each bucket is a list of [key, value] pairs
+
+    def _hash(self, key):
+        # turn key into an index within self.capacity
+         #  return abs(hash(key) % self.capacity)
+         # dont need abs because modulo already only returns a positive number
+         return hash(key) % self.capacity
+
+    def set(self, key, value):
+        # hash the key to find the bucket
+        
+        # check if key already exists in that bucket -> update it
+        # otherwise -> add a new [key, value] pair
+        
+        space_bucket = self._hash(key)
+        position_in_mem = self.buckets[space_bucket]
+        
+        #where the key is, there is a list of data so we need to iterate through this list and find if the key already exists there
+        for listVals in position_in_mem: 
+            if key == listVals[0]: #access position 0 to just grab the first value from the pair within the bucket list
+                listVals[1] = value
+                return
+        
+        position_in_mem.append([key,value])
+        self.length += 1
+        return 
+
+    def get(self, key):
+        # hash the key to find the bucket
+        # search the bucket for a matching key
+        # return its value, or raise an error if not found
+        pass
+
+    def delete(self, key):
+        # hash the key to find the bucket
+        # find and remove the matching [key, value] pair
+        # raise an error if key not found
+        pass
+
+    def __len__(self):
+        return self.length
+
+    def __repr__(self):
+        pass
+
+
+if __name__ == "__main__":
+    ht = HashTable()
+    # test your methods here

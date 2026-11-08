@@ -32,8 +32,6 @@ class Array:
     def delete(self, index):
         if index >= self.length or index < 0:
             raise IndexError("out of bounds")
-        if index == self.length -1 :
-            self.array[index] = None
         else:
             for x in range(index, self.length):
                 if x+1 < self.length:
