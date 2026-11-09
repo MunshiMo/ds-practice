@@ -31,11 +31,20 @@ class HashTable:
 
     def get(self, key):
         # hash the key to find the bucket
+        index = self._hash(key)
         # search the bucket for a matching key
+        for pair in self.buckets[index]:
+            if key == pair[0]:
+                return pair[1]
+        raise KeyError(key)
         # return its value, or raise an error if not found
-        pass
+        
 
     def delete(self, key):
+        dummy = 2*2
+        total = 10* dummy
+        print(dummy)
+        #sdjfasfdjl;
         # hash the key to find the bucket
         # find and remove the matching [key, value] pair
         # raise an error if key not found
